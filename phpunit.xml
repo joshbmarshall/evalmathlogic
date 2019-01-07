@@ -1,0 +1,16 @@
+<phpunit backupGlobals="true"
+         backupStaticAttributes="false"
+         bootstrap="tests/bootstrap.php"
+         cacheTokens="false"
+         colors="true">
+    <testsuites>
+        <testsuite name="Test Suite">
+            <directory suffix="Test.php">tests</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+      <whitelist processUncoveredFilesFromWhitelist="true">
+        <directory suffix=".php">src</directory>
+      </whitelist>
+    </filter>
+</phpunit>
