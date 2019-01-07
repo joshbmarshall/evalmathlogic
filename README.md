@@ -1,6 +1,8 @@
 # EvalMath + Logic
 PHP EvalMath with Logic equations
 
+https://travis-ci.org/joshbmarshall/evalmathlogic.svg?branch=master
+
 This package is a composer-aware way to add the EvalMath package by Miles Kaufmann.
 More information on the original at https://www.phpclasses.org/package/2695-PHP-Safely-evaluate-mathematical-expressions.html
 
