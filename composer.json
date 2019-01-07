@@ -35,7 +35,7 @@
     },
     "autoload": {
         "psr-4": {
-			"Cognito\\EvalMath\\": "src/"
+			"Cognito\\EvalMath\\": "src/EvalMath"
 		}
     },
     "require-dev": {
