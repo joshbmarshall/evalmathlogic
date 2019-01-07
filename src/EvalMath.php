@@ -102,7 +102,7 @@
 
  */
 
-namespace Cognito;
+namespace Cognito\EvalMath;
 
 class EvalMath {
 

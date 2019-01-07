@@ -11,7 +11,7 @@ Added to this is the ability to evaluate logic equations, as per the code by Lee
 To use:
 
 	<?php
-		$math = new \Cognito\EvalMath;
+		$math = new \Cognito\EvalMath\EvalMath;
 		// basic evaluation:
 		$result = $math->evaluate('2 + 2');
 		// supports: order of operation; parentheses; negation; built-in functions
