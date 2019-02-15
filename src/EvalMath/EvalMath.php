@@ -590,7 +590,7 @@ class EvalMath {
 	public function trigger($msg) {
 		$this->last_error = $msg;
 		if (!$this->suppress_errors) {
-			trigger_error($msg, E_USER_WARNING);
+			throw new \Exception($msg);
 		}
 		return false;
 	}
