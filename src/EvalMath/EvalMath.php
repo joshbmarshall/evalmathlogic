@@ -142,6 +142,9 @@ class EvalMath {
 		'ln',
 		'log',
 		'date',
+		'floor',
+		'ceil',
+		'round',
 	);
 
 	public function EvalMath() {
@@ -154,6 +157,10 @@ class EvalMath {
 		$this->evaluate('and(x,y) = x&y');
 		$this->evaluate('or(x,y) = x|y');
 		$this->evaluate('not(x) = 1!x');
+	}
+
+	public function __construct() {
+		$this->EvalMath();
 	}
 
 	public function e($expr) {
@@ -330,6 +337,10 @@ class EvalMath {
 						if ($fnn == 'date') {
 							if ($arg_count != 5) {
 								return $this->trigger("wrong number of arguments ($arg_count given, 5 expected)");
+							}
+						} else if ($fnn == 'round') {
+							if ($arg_count > 2) {
+								return $this->trigger("wrong number of arguments ($arg_count given, 1 or 2 expected)");
 							}
 						} else {
 							if ($arg_count > 1) {
@@ -546,6 +557,10 @@ class EvalMath {
 						$yrs = $stack->pop();
 						$dtstr = sprintf("%04d", $yrs) . "-" . sprintf("%02d", $mnths) . "-" . sprintf("%02d", $dys) . " " . sprintf("%02d", $hrs) . ":" . sprintf("%02d", $mins) . ":00 UTC";
 						eval('$stack->push(strtotime("' . $dtstr . '"));'); // perfectly safe eval()
+					} else if ($fnn == 'round' && $stack->count > 1) {
+						$precision = intval($stack->pop());
+						$round_number = floatval($stack->pop());
+						eval('$stack->push(' . $fnn . '(' . $round_number . ', ' . $precision . '));'); // perfectly safe eval()
 					} else {
 						if (is_null($op1 = $stack->pop())) {
 							return $this->trigger("internal error");

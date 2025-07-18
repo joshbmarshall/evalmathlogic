@@ -147,4 +147,32 @@ class EvalMathTest extends PHPUnit_Framework_TestCase {
 		$this->assertSame(0, $math->evaluate('1 + 1 <= 1'));
 	}
 
+	public function testNot() {
+		$math = new \Cognito\EvalMath\EvalMath();
+		$this->assertSame(0, $math->evaluate('not(1)'));
+	}
+
+	public function testFloor() {
+		$math = new \Cognito\EvalMath\EvalMath();
+		$this->assertSame(3.0, $math->evaluate('floor(10/3)'));
+		$this->assertSame(3.0, $math->evaluate('floor(3.9)'));
+	}
+
+	public function testRound() {
+		$math = new \Cognito\EvalMath\EvalMath();
+		$this->assertSame(3.0, $math->evaluate('floor(10/3)'));
+		$this->assertSame(3.0, $math->evaluate('round(10/3)'));
+		$this->assertSame(3.3, $math->evaluate('round(10/3, 1)'));
+		$this->assertSame(3.33, $math->evaluate('round(10/3, 2)'));
+		$this->assertSame(3.333, $math->evaluate('round(10/3, 3)'));
+		$this->assertSame(3.3333, $math->evaluate('round(10/3, 4)'));
+		$this->assertSame(2.0, $math->evaluate('round(10/6)'));
+		$this->assertSame(1.7, $math->evaluate('round(10/6, 1)'));
+		$this->assertSame(1.67, $math->evaluate('round(10/6, 2)'));
+		$this->assertSame(1.667, $math->evaluate('round(10/6, 3)'));
+		$this->assertSame(1.0, $math->evaluate('round(1.49)'));
+		$this->assertSame(2.0, $math->evaluate('round(1.50)'));
+		$this->assertSame(2.0, $math->evaluate('round(1.51)'));
+	}
+
 }
